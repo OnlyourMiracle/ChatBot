@@ -1,0 +1,19 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.27.244.105:5000/ (Press CTRL+C to quit)
+112.9.180.150 - - [07/Mar/2024 20:29:05] "GET / HTTP/1.1" 200 -
+112.9.180.150 - - [07/Mar/2024 20:31:38] "GET /get?msg=hello HTTP/1.1" 200 -
+112.9.180.150 - - [07/Mar/2024 20:31:47] "GET /get?msg=who%20are%20you? HTTP/1.1" 200 -
+182.33.147.202 - - [07/Mar/2024 20:33:15] "GET / HTTP/1.1" 200 -
+182.33.147.202 - - [07/Mar/2024 20:33:34] "GET /get?msg=How%20are%20you? HTTP/1.1" 200 -
+182.33.147.202 - - [07/Mar/2024 20:33:55] "GET /get?msg=Bye HTTP/1.1" 200 -
+167.248.133.51 - - [07/Mar/2024 20:42:32] "GET / HTTP/1.1" 200 -
+167.248.133.51 - - [07/Mar/2024 20:42:36] "GET / HTTP/1.1" 200 -
+167.248.133.51 - - [07/Mar/2024 20:42:36] code 505, message Invalid HTTP version (2.0)
+167.248.133.51 - - [07/Mar/2024 20:42:36] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.248.133.51 - - [07/Mar/2024 20:42:37] "GET /favicon.ico HTTP/1.1" 404 -
