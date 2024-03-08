@@ -1,0 +1,96 @@
+<!--
+在这个版本中，我做了以下几点修改：
+
+增加了一个div容器，类名为input-group，用于包裹输入框和发送按钮。这使得我们可以更灵活地控制这两个元素的布局，以及它们之间的距离。
+通过使用flex布局在.input-group样式中，我们可以轻松地将按钮放在输入框的右侧，并通过调整margin-right属性来设置它们之间的距离。
+更新了输入框和按钮的CSS样式，以适应新的布局。
+这样的布局调整保持了网页的功能不变，同时提升了用户界面的美观性和使用体验。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OYM's AI Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chat-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            margin-right: 10px; /* Adjusted margin for spacing */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        p {
+            color: #666;
+        }
+        .footer {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h1>Chat with OnlyourMiracle's AI Bot(V2)!</h1>
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="Type your message here(Please use Chinese)..." />
+            <button onclick="getResponse()">Send</button>
+        </div>
+        <p id="botResponse">Your AI responses will appear here...</p>
+    </div>
+    
+    <div class="footer">© 2024 OnlyourMiracle</div>
+    
+    <script>
+        function getResponse() {
+            var userText = document.getElementById("userInput").value;
+            fetch(`/get?msg=${encodeURIComponent(userText)}`).then(response => response.text()).then(text => {
+                document.getElementById("botResponse").innerText = text;
+            }).catch(error => {
+                document.getElementById("botResponse").innerText = 'Sorry, there was an error. Please try again.';
+            });
+        }
+    </script>
+</body>
+</html>

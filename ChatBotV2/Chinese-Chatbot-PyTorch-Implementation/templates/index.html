@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chat-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        input[type="text"] {
+            width: calc(100% - 60px);
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h1>Chat with Our AI Bot!</h1>
+        <input type="text" id="userInput" placeholder="Type your message here..." />
+        <button onclick="getResponse()">Send</button>
+        <p id="botResponse">Your AI responses will appear here...</p>
+    </div>
+    
+    <script>
+        function getResponse() {
+            var userText = document.getElementById("userInput").value;
+            fetch(`/get?msg=${encodeURIComponent(userText)}`).then(response => response.text()).then(text => {
+                document.getElementById("botResponse").innerText = text;
+                document.getElementById("userInput").value = ''; // Clear input after sending
+            }).catch(error => {
+                document.getElementById("botResponse").innerText = 'Sorry, there was an error. Please try again.';
+            });
+        }
+    </script>
+</body>
+</html>
