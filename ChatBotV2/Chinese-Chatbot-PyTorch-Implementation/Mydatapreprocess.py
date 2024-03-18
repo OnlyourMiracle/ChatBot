@@ -7,8 +7,8 @@ import re
 import logging
 jieba.setLogLevel(logging.INFO) #关闭jieba输出信息
 
-corpus_post = 'clean_chat_corpus/stc_weibo_train_post' #未处理的对话数据集
-corpus_response = 'clean_chat_corpus/stc_weibo_train_response' #未处理的对话数据集
+corpus_post = '/content/drive/MyDrive/raw_chat_corpus/weibo-400w/stc_weibo_train_post' #未处理的对话数据集
+corpus_response = '/content/drive/MyDrive/raw_chat_corpus/weibo-400w/stc_weibo_train_response' #未处理的对话数据集
 cop = re.compile("[^\u4e00-\u9fa5^a-z^A-Z^0-9]") #分词处理正则
 unknown = '</UNK>' #unknown字符
 eos = '</EOS>' #句子结束符
@@ -17,24 +17,25 @@ padding = '</PAD>' #句子填充负
 max_voc_length = 10000 #字典最大长度
 min_word_appear = 10 #加入字典的词的词频最小值
 max_sentence_length = 50 #最大句子长度
-save_path = 'corpus.pth' #已处理的对话数据集保存路径
+save_path = '/content/drive/MyDrive/raw_chat_corpus/weibo-400w/stc_weibo_train.pth' #已处理的对话数据集保存路径
 
 def preprocess():
     print("preprocessing...")
     '''处理对话数据集'''
     data = []
-    with open(corpus_post, encoding='utf-8') as fpost:
-        with open(corpus_response, encoding='utf-8') as fresp 
-        plines = fpost.readlines()
-        rlines = fresp.readlines()
-        for line in lines:
-            values = line.strip('\n').split('\t')
-            sentences = []
-            for value in values:
-                sentence = jieba.lcut(cop.sub("",value))
-                sentence = sentence[:max_sentence_length] + [eos]
-                sentences.append(sentence)
-            data.append(sentences)
+    combined_lines = []  # 初始化用于保存配对行的列表
+    with open(corpus_post, 'r', encoding='utf-8') as f1, open(corpus_response, 'r', encoding='utf-8') as f2:
+        for line1, line2 in zip(f1, f2):
+            combined_lines.append([line1.strip(), line2.strip()])  # 移除行尾的换行符，并将两行作为列表保存
+
+    for line in combined_lines:
+        sentences = []
+        for value in line:
+            sentence = cop.sub("", value).split()
+            #sentence = jieba.lcut(cop.sub("", value))
+            sentence = sentence[:max_sentence_length] + [eos]
+            sentences.append(sentence)
+        data.append(sentences)
 
     '''生成字典和句子索引'''
     word_nums = {} #统计单词的词频

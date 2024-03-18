@@ -1,3 +1,2 @@
-lines = [1,2]
-for line in lines:
-    print(line)
+for i in range(6):
+    print(i)
