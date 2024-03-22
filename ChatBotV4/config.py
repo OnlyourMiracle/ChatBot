@@ -15,18 +15,18 @@ class Config:
     '''
     训练超参数
     '''
-    batch_size = 2000
+    batch_size = 2048
     shuffle = True #dataloader是否打乱数据
     num_workers = 0 #dataloader多进程提取数据
     bidirectional = True #Encoder-RNN是否双向
     hidden_size = 256
     embedding_dim = 256
     method = 'dot' #attention method
-    dropout = 0.1 #是否使用dropout
+    dropout = 0.2 #是否使用dropout
     clip = 60.0 #梯度裁剪阈值
     num_layers = 2 #Encoder-RNN层数
     learning_rate = 1e-3
-    teacher_forcing_ratio = 1.0 #teacher_forcing比例
+    teacher_forcing_ratio = 0.9 #teacher_forcing比例
     decoder_learning_ratio = 5.0
     '''
     训练周期信息
