@@ -10,7 +10,7 @@ class Config:
     use_QA_first = True #是否载入知识库
     max_input_length = 50 #输入的最大句子长度
     max_generate_length = 20 #生成的最大句子长度
-    prefix = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/checkpoints/chatbot'  #模型断点路径前缀
+    prefix = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot'  #模型断点路径前缀
     model_ckpt  = None #加载模型路径
     '''
     训练超参数
@@ -23,10 +23,10 @@ class Config:
     embedding_dim = 256
     method = 'dot' #attention method
     dropout = 0.2 #是否使用dropout
-    clip = 60.0 #梯度裁剪阈值
+    clip = 50.0 #梯度裁剪阈值
     num_layers = 2 #Encoder-RNN层数
     learning_rate = 1e-3
-    teacher_forcing_ratio = 0.9 #teacher_forcing比例
+    teacher_forcing_ratio = 0.85 #teacher_forcing比例
     decoder_learning_ratio = 5.0
     '''
     训练周期信息
@@ -39,6 +39,3 @@ class Config:
     '''
     use_gpu = torch.cuda.is_available() #是否使用gpu
     device = torch.device("cuda" if use_gpu else "cpu") #device
-
-    
-    
