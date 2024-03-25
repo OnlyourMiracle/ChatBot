@@ -167,8 +167,8 @@ def train(**kwargs):
     #定义优化器(注意与encoder.to(device)前后不要反)
     encoder_optimizer = torch.optim.Adam(encoder.parameters(), lr=opt.learning_rate)
     decoder_optimizer = torch.optim.Adam(decoder.parameters(), lr=opt.learning_rate * opt.decoder_learning_ratio)
-    encoder_scheduler = optim.lr_scheduler.StepLR(encoder_optimizer, step_size=30, gamma=0.1)   #学习率衰减：每过30个epochs，学习率乘以0.1
-    decoder_scheduler = optim.lr_scheduler.StepLR(decoder_optimizer, step_size=30, gamma=0.1)   #学习率衰减：每过30个epochs，学习率乘以0.1
+    encoder_scheduler = optim.lr_scheduler.StepLR(encoder_optimizer, step_size=10, gamma=0.96)   #学习率衰减：每过10个epochs，学习率乘以0.1
+    decoder_scheduler = optim.lr_scheduler.StepLR(decoder_optimizer, step_size=10, gamma=0.96)   #学习率衰减：每过10个epochs，学习率乘以0.1
     if opt.model_ckpt:
         encoder_optimizer.load_state_dict(checkpoint['en_opt'])
         decoder_optimizer.load_state_dict(checkpoint['de_opt']) 
@@ -308,4 +308,3 @@ def output_answer(input_sentence, searcher, sos, eos, unknown, opt, word2ix, ix2
 if __name__ == "__main__":
     import fire
     fire.Fire()
-        
