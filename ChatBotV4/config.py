@@ -11,7 +11,7 @@ class Config:
     max_input_length = 50 #输入的最大句子长度
     max_generate_length = 20 #生成的最大句子长度
     prefix = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot'  #模型断点路径前缀
-    model_ckpt  = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot_0324_2123'
+    model_ckpt  = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot_0325_1119'
     '''
     训练超参数
     '''
@@ -25,7 +25,7 @@ class Config:
     dropout = 0 #是否使用dropout
     clip = 50.0 #梯度裁剪阈值
     num_layers = 2 #Encoder-RNN层数
-    learning_rate = 0.0005
+    learning_rate = 0.0001
     teacher_forcing_ratio = 1.0 #teacher_forcing比例
     decoder_learning_ratio = 5.0
     '''
