@@ -6,16 +6,16 @@ class Config:
     '''
     Chatbot模型参数
     '''
-    corpus_data_path = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/clean_chat_corpus/weibo.pth' #已处理的对话数据
+    corpus_data_path = '/gemini/data-1/weibo.pth' #已处理的对话数据
     use_QA_first = True #是否载入知识库
     max_input_length = 50 #输入的最大句子长度
     max_generate_length = 20 #生成的最大句子长度
-    prefix = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot'  #模型断点路径前缀
-    model_ckpt  = '/home/aistudio/ChatBot/ChatBotV2/Chinese-Chatbot-PyTorch-Implementation/Newcheckpoints/chatbot_0326_1417'
+    prefix = '/gemini/Checkpoints/chatbot'  #模型断点路径前缀
+    model_ckpt  = '/gemini/data-1/Checkpoints/chatbot_0326_1626'
     '''
     训练超参数
     '''
-    batch_size = 10000
+    batch_size = 12000
     shuffle = True #dataloader是否打乱数据
     num_workers = 0 #dataloader多进程提取数据
     bidirectional = True #Encoder-RNN是否双向
