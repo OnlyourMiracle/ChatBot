@@ -15,7 +15,7 @@ class Config:
     '''
     训练超参数
     '''
-    batch_size = 11000
+    batch_size = 13750
     shuffle = True #dataloader是否打乱数据
     num_workers = 0 #dataloader多进程提取数据
     bidirectional = True #Encoder-RNN是否双向
